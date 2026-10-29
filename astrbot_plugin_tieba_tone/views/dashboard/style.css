@@ -1,0 +1,425 @@
+/* 吧味学习机 · 插件可视化视图样式 */
+:root {
+    --ts-bg: #f6f7f9;
+    --ts-card: #ffffff;
+    --ts-text: #1f2329;
+    --ts-text-2: #646b74;
+    --ts-border: #e3e6ea;
+    --ts-primary: #2b6cff;
+    --ts-primary-soft: rgba(43, 108, 255, 0.1);
+    --ts-ok: #2fbf71;
+    --ts-warn: #e8a13a;
+    --ts-err: #e5484d;
+    --ts-code-bg: #f0f2f5;
+    --ts-radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ts-bg: #15171c;
+        --ts-card: #1d2027;
+        --ts-text: #e8eaee;
+        --ts-text-2: #9aa1ab;
+        --ts-border: #31363f;
+        --ts-primary: #5b8dff;
+        --ts-primary-soft: rgba(91, 141, 255, 0.14);
+        --ts-ok: #3fd17c;
+        --ts-warn: #f0b45c;
+        --ts-err: #ff6166;
+        --ts-code-bg: #14161b;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#app {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--ts-text);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4px;
+}
+
+.ts-loading {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--ts-text-2);
+}
+
+.ts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 2px 16px;
+}
+
+.ts-header h1 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.ts-sub {
+    color: var(--ts-text-2);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.ts-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--ts-code-bg);
+    border: 1px solid var(--ts-border);
+    white-space: nowrap;
+}
+
+.ts-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ts-text-2);
+}
+
+.ts-badge.ok .dot {
+    background: var(--ts-ok);
+}
+
+.ts-badge.run .dot {
+    background: var(--ts-warn);
+    animation: ts-blink 1s infinite alternate;
+}
+
+@keyframes ts-blink {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+.ts-tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--ts-border);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.ts-tab {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    background: none;
+    color: var(--ts-text-2);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+}
+
+.ts-tab.active {
+    color: var(--ts-primary);
+    border-bottom-color: var(--ts-primary);
+    font-weight: 600;
+}
+
+.ts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.ts-card {
+    background: var(--ts-card);
+    border: 1px solid var(--ts-border);
+    border-radius: var(--ts-radius);
+    padding: 16px;
+}
+
+.ts-card h3 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: var(--ts-text-2);
+    font-weight: 600;
+}
+
+.ts-card.full {
+    grid-column: 1 / -1;
+}
+
+.ts-kv {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 13px;
+    border-bottom: 1px dashed var(--ts-border);
+}
+
+.ts-kv:last-child {
+    border-bottom: none;
+}
+
+.ts-kv .k {
+    color: var(--ts-text-2);
+    flex-shrink: 0;
+}
+
+.ts-kv .v {
+    text-align: right;
+    word-break: break-all;
+}
+
+.ts-stat-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ts-stat {
+    flex: 1;
+    min-width: 96px;
+    background: var(--ts-code-bg);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+.ts-stat .num {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.ts-stat .lbl {
+    font-size: 12px;
+    color: var(--ts-text-2);
+    margin-top: 2px;
+}
+
+.ts-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid var(--ts-border);
+    background: var(--ts-card);
+    color: var(--ts-text);
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.ts-btn:hover {
+    opacity: 0.85;
+}
+
+.ts-btn.primary {
+    background: var(--ts-primary);
+    border-color: var(--ts-primary);
+    color: #fff;
+}
+
+.ts-btn.danger {
+    color: var(--ts-err);
+    border-color: var(--ts-err);
+}
+
+.ts-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ts-btn + .ts-btn {
+    margin-left: 8px;
+}
+
+.ts-input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid var(--ts-border);
+    border-radius: 8px;
+    background: var(--ts-bg);
+    color: var(--ts-text);
+    outline: none;
+}
+
+.ts-input:focus {
+    border-color: var(--ts-primary);
+}
+
+.ts-mt8 {
+    margin-top: 8px;
+}
+
+.ts-mt16 {
+    margin-top: 16px;
+}
+
+.ts-ml12 {
+    margin-left: 12px;
+}
+
+.ts-form-field {
+    margin-bottom: 14px;
+}
+
+.ts-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ts-text);
+}
+
+.ts-form-field .ts-hint {
+    margin-top: 4px;
+}
+
+.ts-toast {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99999;
+    max-width: 80%;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #fff;
+    background: #4e5969;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.ts-toast.ok {
+    background: #00b42a;
+}
+
+.ts-toast.err {
+    background: #f53f3f;
+}
+
+.ts-btn.armed {
+    box-shadow: 0 0 0 2px #f53f3f;
+    font-weight: 700;
+}
+
+.ts-hint {
+    font-size: 12px;
+    color: var(--ts-text-2);
+    line-height: 1.7;
+}
+
+.ts-qr {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.ts-qr img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    background: #fff;
+    padding: 8px;
+}
+
+.ts-qr-status {
+    margin-top: 10px;
+    font-size: 13px;
+    min-height: 20px;
+}
+
+.ts-qr-status.ok { color: var(--ts-ok); }
+.ts-qr-status.warn { color: var(--ts-warn); }
+.ts-qr-status.err { color: var(--ts-err); }
+
+.ts-pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 13px;
+    line-height: 1.75;
+    background: var(--ts-code-bg);
+    border-radius: 10px;
+    padding: 14px;
+    max-height: 420px;
+    overflow: auto;
+    margin: 0;
+}
+
+.ts-quote {
+    padding: 8px 12px;
+    border-left: 3px solid var(--ts-primary);
+    background: var(--ts-code-bg);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.ts-quote .meta {
+    font-size: 11px;
+    color: var(--ts-text-2);
+    margin-top: 4px;
+}
+
+.ts-log {
+    font-size: 12px;
+    line-height: 1.7;
+    padding: 6px 10px;
+    border-bottom: 1px dashed var(--ts-border);
+    display: flex;
+    gap: 10px;
+}
+
+.ts-log .lv {
+    flex-shrink: 0;
+    font-weight: 700;
+    width: 44px;
+}
+
+.ts-log.info .lv { color: var(--ts-primary); }
+.ts-log.warn .lv { color: var(--ts-warn); }
+.ts-log.error .lv { color: var(--ts-err); }
+.ts-log.debug .lv { color: var(--ts-text-2); }
+
+.ts-log .t {
+    color: var(--ts-text-2);
+    flex-shrink: 0;
+}
+
+.ts-empty {
+    color: var(--ts-text-2);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 13px;
+}
+
+.ts-spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--ts-border);
+    border-top-color: var(--ts-primary);
+    border-radius: 50%;
+    animation: ts-spin 0.8s linear infinite;
+    vertical-align: -2px;
+    margin-right: 6px;
+}
+
+@keyframes ts-spin {
+    to { transform: rotate(360deg); }
+}
+
+.ts-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
