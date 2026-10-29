@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# AstrBot plugin runtime data（不应进入仓库 / 发布压缩包）
+data/
+*.log
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# 前端构建产物与依赖
+node_modules/
+dist/
+
+# 测试与缓存
+.pytest_cache/
+.mypy_cache/
